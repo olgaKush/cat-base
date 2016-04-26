@@ -1,0 +1,29 @@
+<h1>Hello, and welcome to the Database of Cats!</h1>
+<%= link_to 'Cat Database', controller: 'cats' %>
+
+<h1>Listing cats</h1>
+ 
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Color</th>
+    <th>Race</th>
+    <th>Gender</th>
+  </tr>
+ 
+  <% @cats.each do |cat| %>
+    <tr>
+      <td><%= cat.name %></td>
+      <td><%= cat.color %></td>
+      <td><%= cat.race %></td>
+      <td><%= cat.gender %></td>
+      <td><%= link_to 'Show', cat_path(cat) %></td>
+      <td><%= link_to 'Edit', edit_cat_path(cat) %></td>
+      <td><%= link_to 'Destroy', cat_path(cat),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+<h3>You can add a new cat entry here!</h3>
+<%= link_to 'Add a Cat', new_cat_path %>
